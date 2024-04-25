@@ -1,0 +1,43 @@
+type: worker
+version: 1.0.0
+
+schema:
+  id: worker-03
+  name:
+    human: Jina Reader Worker
+    model: jina_worker
+  description:
+    human: Jina Reader converts any URL to an LLM-friendly input with a simple prefix https://r.jina.ai/. Get improved output for your agent and RAG systems at no cost.
+    model: Jina Reader can converts and crawl any URL to an LLM-friendly input and get improved output.
+  avatar: https://app.questflow.ai/images/logo.png
+  creator: Questflow
+  skills:
+    - name:
+        human: Crawl Website
+        model: crawl_website
+      description:
+        human: It can crawl website you gived url into improved output
+        model: It can crawl website user gived url and get improved output.
+      handler: crawl
+      requestSchema:
+        type: object
+        properties:
+          url:
+            type: string
+            description: website url
+          mode:
+            type: string
+            enum: ["json", "standard", "stream"]
+      responseSchema:
+        type: object
+        properties:
+          title:
+            type: string
+            description: website title
+          url:
+            type: string
+            description: website url
+          content:
+            type: string
+            description: website content
+  entry: ./src/index.ts
