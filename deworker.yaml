@@ -19,6 +19,7 @@ schema:
         human: It can crawl website you gived url into improved output
         model: It can crawl website user gived url and get improved output.
       handler: crawl
+      basePoints: 1
       requestSchema:
         type: object
         properties:
