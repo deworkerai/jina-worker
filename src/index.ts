@@ -22,13 +22,15 @@ export const crawl = async ({ params, stream }: any = {}) => {
         Accept: 'application/json',
       },
     });
-
-    return rtn.json();
+    const json = await rtn.json();
+    console.log('response in json mode: ', json);
+    return json;
   }
 
   const rtn = await nodeFetch(`https://r.jina.ai/${url}`, {
     method: 'GET',
   });
-
-  return rtn.text();
+  const text = await rtn.text();
+  console.log('response in standard mode: ', text);
+  return text;
 };
